@@ -22,7 +22,7 @@ with st.form(key='analysis_form'):
 if submitted:
     # Buttons to toggle analysis visibility after form submission
     if st.button("Show/Hide Analysis for Document 1"):
-        st.session_state.show_analysis_1 = not st.session_state.show_analysis_
+        st.session_state.show_analysis_1 = not st.session_state.show_analysis_1
     
     if st.button("Show/Hide Analysis for Document 2"):
         st.session_state.show_analysis_2 = not st.session_state.show_analysis_2
