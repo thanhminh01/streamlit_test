@@ -8,19 +8,17 @@ if 'show_analysis_2' not in st.session_state:
 if 'show_analysis_3' not in st.session_state:
     st.session_state.show_analysis_3 = False
 
-# Show form only if 'submitted' is True
+# Create a form for the query input
 submitted = False
 with st.form(key='analysis_form'):
-    st.write("Please click submit to view the thematic analysis of the documents.")
-    
-    # Submit button to start the analysis
+    query = st.text_input("Enter a search query (default: 'Prompt Engineering'):") or "Prompt Engineering"
     submit_button = st.form_submit_button(label='Submit')
-
     if submit_button:
         submitted = True
 
+# Show/hide content based on whether form was submitted
 if submitted:
-    # Buttons to toggle analysis visibility after form submission
+    # Show the buttons to toggle analysis visibility
     if st.button("Show/Hide Analysis for Document 1"):
         st.session_state.show_analysis_1 = not st.session_state.show_analysis_1
     
@@ -30,23 +28,18 @@ if submitted:
     if st.button("Show/Hide Analysis for Document 3"):
         st.session_state.show_analysis_3 = not st.session_state.show_analysis_3
 
-    # Conditional display for Document 1 analysis
+    # Display the analysis or a prompt based on the toggle state
     if st.session_state.show_analysis_1:
-        # Replace with actual analysis result for Document 1
         st.write("Document 1 Analysis: The thematic analysis for this document reveals several core themes...")
     else:
         st.write("Click the button to show the analysis for Document 1.")
 
-    # Conditional display for Document 2 analysis
     if st.session_state.show_analysis_2:
-        # Replace with actual analysis result for Document 2
         st.write("Document 2 Analysis: In-depth analysis uncovers significant themes and patterns...")
     else:
         st.write("Click the button to show the analysis for Document 2.")
 
-    # Conditional display for Document 3 analysis
     if st.session_state.show_analysis_3:
-        # Replace with actual analysis result for Document 3
         st.write("Document 3 Analysis: Key themes identified in this research highlight several trends...")
     else:
         st.write("Click the button to show the analysis for Document 3.")
