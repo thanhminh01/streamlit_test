@@ -10,7 +10,7 @@ if 'show_analysis_3' not in st.session_state:
 if 'submitted' not in st.session_state:
     st.session_state.submitted = False
 
-# Show form only if 'submitted' is False
+# Display submit button before the analysis section
 if not st.session_state.submitted:
     with st.form(key='analysis_form'):
         st.write("Please click submit to view the thematic analysis of the documents.")
@@ -23,7 +23,9 @@ if not st.session_state.submitted:
 
 # After form submission, show buttons to toggle analysis visibility
 if st.session_state.submitted:
-    # Buttons to toggle analysis visibility after form submission
+    # Display analysis toggle buttons independently of the form
+    st.write("Click the buttons below to toggle the thematic analysis of each document.")
+
     if st.button("Show/Hide Analysis for Document 1"):
         st.session_state.show_analysis_1 = not st.session_state.show_analysis_1
     
