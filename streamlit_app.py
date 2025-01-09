@@ -10,9 +10,12 @@ if 'show_analysis_3' not in st.session_state:
 if 'submitted' not in st.session_state:
     st.session_state.submitted = False
 
+# Create a placeholder for the form
+form_placeholder = st.empty()
+
 # Show form only if 'submitted' is False
 if not st.session_state.submitted:
-    with st.form(key='analysis_form'):
+    with form_placeholder.form(key='analysis_form'):
         st.write("Please click submit to view the thematic analysis of the documents.")
         
         # Submit button to start the analysis
@@ -20,7 +23,7 @@ if not st.session_state.submitted:
 
         if submit_button:
             st.session_state.submitted = True
-            st.experimental_rerun()  # Rerun the script to remove the submit button immediately
+            form_placeholder.empty()  # Clear the form to make it disappear immediately
 
 # After form submission, show buttons to toggle analysis visibility
 if st.session_state.submitted:
