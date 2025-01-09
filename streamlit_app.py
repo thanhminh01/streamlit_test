@@ -55,5 +55,4 @@ while(1):
     if not st.session_state.submitted:
         display_form()
     else:
-        st.write("button pressed")
         display_analysis()
