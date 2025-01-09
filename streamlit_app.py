@@ -51,5 +51,7 @@ def display_analysis():
         st.write("Click the button to show the analysis for Document 3.")
 
 # Main logic
-display_form()
+
+ if not st.session_state.submitted:
+        display_form()
 display_analysis()
