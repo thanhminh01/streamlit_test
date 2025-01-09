@@ -10,16 +10,6 @@ if 'show_analysis_3' not in st.session_state:
 if 'submitted' not in st.session_state:
     st.session_state.submitted = False
 
-# Function to handle the display of the form
-def display_form():
-    form_placeholder = st.empty()
-    with form_placeholder.form(key='analysis_form'):
-        st.write("Please click submit to view the thematic analysis of the documents.")
-        submit_button = st.form_submit_button(label='Submit')
-        if submit_button:
-            st.session_state.submitted = True
-            form_placeholder.empty()  # Clear the form
-
 # Function to display analysis buttons and content
 def display_analysis():
     # Buttons to toggle analysis visibility after form submission
@@ -52,5 +42,14 @@ def display_analysis():
 
 # Main logic
 if not st.session_state.submitted:
-    display_form()
-display_analysis()
+    st.write("Please click submit to view the thematic analysis of the documents.")
+
+    # Create a placeholder for the submit button
+    submit_button_placeholder = st.empty()
+    if submit_button_placeholder.button("Submit"):
+        st.session_state.submitted = True
+        submit_button_placeholder.empty()  # Remove only the button after it's clicked
+
+# After form submission, display analysis
+if st.session_state.submitted:
+    display_analysis()
