@@ -11,15 +11,15 @@ if 'submitted' not in st.session_state:
     st.session_state.submitted = False
 
 # Place the form inside an `if` block for the first time the user interacts
+if not st.session_state.submitted:
+    with st.form(key='analysis_form'):
+        st.write("Please click submit to view the thematic analysis of the documents.")
+            
+        # Submit button to start the analysis
+        submit_button = st.form_submit_button(label='Submit')
 
-with st.form(key='analysis_form'):
-    st.write("Please click submit to view the thematic analysis of the documents.")
-        
-    # Submit button to start the analysis
-    submit_button = st.form_submit_button(label='Submit')
-
-    if submit_button:
-        st.session_state.submitted = True
+        if submit_button:
+            st.session_state.submitted = True
 
 # Always show the submit button on the page (outside the form)
 if st.session_state.submitted:
