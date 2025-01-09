@@ -11,7 +11,7 @@ if 'submitted' not in st.session_state:
     st.session_state.submitted = False
 
 # Place the form inside an `if` block for the first time the user interacts
-if not st.session_state.submitted:
+if st.session_state.submitted:
     with st.form(key='analysis_form'):
         st.write("Please click submit to view the thematic analysis of the documents.")
             
