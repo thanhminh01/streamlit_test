@@ -1,14 +1,6 @@
 import streamlit as st
 
 # Initialize session states for each button's content visibility
-if 'show_analysis_1' not in st.session_state:
-    st.session_state.show_analysis_1 = False
-if 'show_analysis_2' not in st.session_state:
-    st.session_state.show_analysis_2 = False
-if 'show_analysis_3' not in st.session_state:
-    st.session_state.show_analysis_3 = False
-if 'submitted' not in st.session_state:
-    st.session_state.submitted = False
 
 # Place the form inside an `if` block for the first time the user interacts
 
@@ -20,15 +12,6 @@ with st.form(key='analysis_form'):
 
     if submit_button:
 
-        # Buttons to toggle analysis visibility after form submission
-        if st.button("Show/Hide Analysis for Document 1"):
-            st.session_state.show_analysis_1 = not st.session_state.show_analysis_1
-        
-        if st.button("Show/Hide Analysis for Document 2"):
-            st.session_state.show_analysis_2 = not st.session_state.show_analysis_2
-        
-        if st.button("Show/Hide Analysis for Document 3"):
-            st.session_state.show_analysis_3 = not st.session_state.show_analysis_3
 
         # Conditional display for Document 1 analysis
         if st.session_state.show_analysis_1:
